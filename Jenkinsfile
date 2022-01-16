@@ -15,7 +15,7 @@ node {
 
 
 	stage('Git') {
-		git 'https://github.com/sunpyopark/dmg-python-coreapp/'
+		git 'https://github.com/sunpyopark/dmg-python-coreapp'
 	}
 	
 	stage('Build') {

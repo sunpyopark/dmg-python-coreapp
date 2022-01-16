@@ -14,9 +14,9 @@ node {
     def gitlabCredential = 'git-lab'
 
 
-	stage('GitLab') {
-                git credentialsId: 'git-lab', url: 'http://gitlab.subserve.life/root/python-coreapp'
-        }
+	stage('Git') {
+		git 'https://github.com/sunpyopark/simple-nodejs-k8s/'
+	}
 	
 	stage('Build') {
 		sh 'npm install'
@@ -32,7 +32,7 @@ node {
 **/
 
         stage('Building Docker image For AWS ECR') {
-        docker.withRegistry('https://808066484529.dkr.ecr.us-west-1.amazonaws.com/python-coreapp', 'ecr:us-west-1:dmg-ecr-credentials') {
+        docker.withRegistry('https://808066484529.dkr.ecr.us-west-1.amazonaws.com/dmg-python-coreapp', 'ecr:us-west-1:dmg-ecr-credentials') {
 	   def buildName = awsecrregistry + version + "$BUILD_NUMBER"
 		newApp = docker.build buildName
 		newApp.push()

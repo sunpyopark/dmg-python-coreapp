@@ -7,7 +7,7 @@ node {
     env.AWS_ECR_LOGIN=true
     def newApp
     def registry = 'krandmm/python-coreapp'
-    def awsecrregistry = 'python-coreapp'
+    def awsecrregistry = 'ci-auto-test'
     def version = ':v0.1.'
     def registryCredential = 'docker-hub'
     def awsecrCredential = 'dmg-ecr-credentials'

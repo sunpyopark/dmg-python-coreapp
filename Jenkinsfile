@@ -15,7 +15,7 @@ node {
 
 
 	stage('Github Check Out') {
-                git branch: 'master', credentialsId: 'dmg-github', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
+                git credentialsId: 'dmg-github', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
         }
 	
 	stage('Build') {

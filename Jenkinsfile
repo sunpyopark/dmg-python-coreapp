@@ -15,7 +15,7 @@ node {
 
 
 	stage('GitLab') {
-                git credentialsId: 'git-lab', url: 'http://gitlab.subserve.life/root/python-coreapp'
+                git credentialsId: 'git-lab', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
         }
 	
 	stage('Build') {

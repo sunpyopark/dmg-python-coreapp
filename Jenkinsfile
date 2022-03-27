@@ -11,11 +11,11 @@ node {
     def version = ':v0.1.'
     def registryCredential = 'docker-hub'
     def awsecrCredential = 'dmg-ecr-credentials'
-    def gitlabCredential = 'git-lab'
+     def githubCredential = 'dmg-github'
 
 
 	stage('GitLab') {
-                git credentialsId: 'git-lab', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
+                git credentialsId: 'dmg-github', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
         }
 	
 	stage('Build') {

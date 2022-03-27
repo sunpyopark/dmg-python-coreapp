@@ -14,8 +14,8 @@ node {
      def githubCredential = 'dmg-github'
 
 
-	stage('GitLab') {
-                git credentialsId: 'dmg-github', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
+	stage('Github Check Out') {
+                git branch: 'main', credentialsId: 'dmg-github', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
         }
 	
 	stage('Build') {

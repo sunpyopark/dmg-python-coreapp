@@ -5,5 +5,3 @@ BBB
 CCC
 DDD
 EEE
-GGG
-HHH

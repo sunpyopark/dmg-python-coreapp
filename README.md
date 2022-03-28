@@ -9,4 +9,3 @@ FFF
 GGG
 HHH
 AAA
-BBB

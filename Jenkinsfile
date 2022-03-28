@@ -7,20 +7,21 @@ node {
     env.AWS_ECR_LOGIN=true
     def newApp
     def registry = 'krandmm/python-coreapp'
-    def awsecrregistry = 'python-coreapp'
+    def awsecrregistry = 'ci-auto-test'
     def version = ':v0.1.'
     def registryCredential = 'docker-hub'
     def awsecrCredential = 'dmg-ecr-credentials'
-    def gitlabCredential = 'git-lab'
+     def githubCredential = 'dmg-github'
 
 
-	stage('Git') {
-		git 'https://github.com/sunpyopark/dmg-python-coreapp'
-	}
-	
+	stage('Github Check Out') {
+                git branch: 'main', credentialsId: 'dmg-github', url: 'https://github.com/DmgSunpyo/dmg-python-coreapp'
+        }
+/**	
 	stage('Build') {
 		sh 'npm install'
 	}
+**/
 /**
 	stage('Building Docker image') {
         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
@@ -30,9 +31,9 @@ node {
         }
 	}
 **/
-
+/**
         stage('Building Docker image For AWS ECR') {
-        docker.withRegistry('https://808066484529.dkr.ecr.us-west-1.amazonaws.com/dmg-python-coreapp', 'ecr:us-west-1:dmg-ecr-credentials') {
+        docker.withRegistry('https://808066484529.dkr.ecr.us-west-1.amazonaws.com/ci-auto-test', 'ecr:us-west-1:dmg-ecr-credentials') {
 	   def buildName = awsecrregistry + version + "$BUILD_NUMBER"
 		newApp = docker.build buildName
 		newApp.push()
@@ -43,7 +44,7 @@ node {
             sh "docker rmi $registry:$BUILD_NUMBER --force"
             sh "docker rmi $registry:latest --force"
         }
-        
+**/        
 	stage("Slack speak") {
         slackSend color: '#BADA55', message: 'Hello, Python-Core Good!'
         }
